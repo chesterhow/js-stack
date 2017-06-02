@@ -1,0 +1,68 @@
+@import 'variables';
+
+.tool {
+  background: $white;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  padding: 1.5em;
+
+  &--heading {
+    cursor: pointer;
+    position: relative;
+
+    &:hover .tool--name {
+      text-decoration-color: $grey-dark;
+    }
+  }
+
+  &--img {
+    margin-right: 1em;
+    vertical-align: middle;
+    width: 3em;
+  }
+
+  &--name {
+    display: inline-block;
+    font-size: 3em;
+    margin: 0;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: .3s all ease-out;
+    vertical-align: middle;
+  }
+
+  &--information {
+    color: $grey-dark;
+    margin: .5em 0 0 4em;
+  }
+
+  &--summary {
+    margin: 0;
+  }
+
+  &--links {
+    color: $grey;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 1.5em 1em 0 0;
+    text-decoration: underline;
+  }
+
+  &--content {
+    margin-top: 1.5em;
+  }
+
+  &--benefits-title {
+    font-weight: 700;
+    margin: 0 0 .5em;
+  }
+
+  &--benefits {
+    margin: 0;
+
+    li {
+      line-height: 1.5;
+    }
+  }
+}

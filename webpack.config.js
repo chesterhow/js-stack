@@ -47,6 +47,15 @@ const config = {
           loader: 'sass-loader'
           // compiles Sass to CSS
         }]
+      }, {
+        test: /\.(jpg|png|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 25000,
+            name: '[name].[ext]'
+          }
+        }
       }
     ]
   },

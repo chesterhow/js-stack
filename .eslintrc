@@ -11,6 +11,9 @@
   },
   "rules": {
     "comma-dangle": ["error", "never"],
+    "global-require": "off",
+    "import/no-dynamic-require": "off",
+    "react/forbid-prop-types": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
