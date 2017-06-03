@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './stylesheets/tool.scss';
+import '../stylesheets/tool.scss';
 
 class Tool extends Component {
   constructor(props) {
@@ -69,7 +69,7 @@ class Tool extends Component {
         >
           <img
             className="tool--img"
-            src={require(`${tool.imgPath}`) || ''}
+            src={require(`../images/${tool.imgPath}`) || ''}
             alt={tool.name}
           />
           <h3 className="tool--name">{tool.name}</h3>

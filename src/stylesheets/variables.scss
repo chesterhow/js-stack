@@ -15,15 +15,10 @@ $shadow: rgba(0, 0, 0, .1);
   transform: translate($x, $y);
 }
 
-%center {
-  @include transform-translate(-50%, -50%);
-  left: 50%;
-  position: relative;
-  top: 50%;
-}
-
-%center-vertical {
-  @include transform-translate(0, -50%);
-  position: absolute;
-  top: 50%;
+%container {
+  height: 100vh;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 1.5rem 1.5rem;
+  width: 100vw;
 }

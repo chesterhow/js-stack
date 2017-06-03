@@ -1,7 +1,7 @@
 [
   {
     "name": "React",
-    "imgPath": "./images/react.svg",
+    "imgPath": "react.svg",
     "summary": "A JS library for building user interfaces.",
     "benefits": [
       {
@@ -50,7 +50,7 @@
   },
   {
     "name": "Redux",
-    "imgPath": "./images/redux.svg",
+    "imgPath": "redux.svg",
     "summary": "A predictable state container for JavaScript apps.",
     "benefits": [
       {
@@ -84,7 +84,7 @@
   },
   {
     "name": "webpack 2",
-    "imgPath": "./images/webpack.svg",
+    "imgPath": "webpack.svg",
     "summary": "A module bundler for JavaScript.",
     "benefits": [
       {
@@ -112,7 +112,7 @@
   },
   {
     "name": "Babel",
-    "imgPath": "./images/babel.svg",
+    "imgPath": "babel.svg",
     "summary": "A JavaScript compiler for compiling ES6 to ES5.",
     "benefits": [
       {
@@ -134,7 +134,7 @@
   },
   {
     "name": "React Router",
-    "imgPath": "./images/react-router.svg",
+    "imgPath": "react-router.svg",
     "summary": "Declarative routing for React.",
     "benefits": [
       {
@@ -150,7 +150,7 @@
   },
   {
     "name": "ESLint",
-    "imgPath": "./images/eslint.svg",
+    "imgPath": "eslint.svg",
     "summary": "A ECMAScript / JavaScript linter.",
     "benefits": [
       {
@@ -187,7 +187,7 @@
   },
   {
     "name": "Flow (?)",
-    "imgPath": "./images/flow.svg",
+    "imgPath": "flow.svg",
     "summary": "A static type checker for JavaScript.",
     "benefits": [
       {

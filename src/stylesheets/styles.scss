@@ -8,6 +8,7 @@
 
 html,
 body {
+  font-size: 20px;
   margin: 0;
   padding: 0;
 }
@@ -16,23 +17,8 @@ body {
   background: $background;
   color: $black;
   font-family: 'Lora', serif;
-  font-size: 20px;
 }
 
 *:focus {
   outline: 0;
-}
-
-.app {
-  height: 100vh;
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 1.5em;
-  width: 100vw;
-
-  &--title {
-    color: $grey;
-    font-size: 1em;
-    margin: 0 1.5em 1.5em;
-  }
 }

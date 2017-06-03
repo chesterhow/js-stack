@@ -1,0 +1,37 @@
+@import 'variables';
+
+.nav {
+  height: 3rem;
+  padding: 0 1.5rem;
+  width: 100%;
+
+  &--title {
+    color: $grey;
+    display: inline-block;
+    font-size: 1.2rem;
+    line-height: 3rem;
+    margin: 0;
+  }
+
+  &--links {
+    display: inline-block;
+    float: right;
+    line-height: 3rem;
+  }
+
+  &--link {
+    color: $grey;
+    display: inline-block;
+    line-height: 1;
+    transition: .3s all ease-out;
+
+    &:not(:first-child) {
+      margin-left: 1rem;
+    }
+
+    &-active,
+    &:hover {
+      color: $grey-dark;
+    }
+  }
+}

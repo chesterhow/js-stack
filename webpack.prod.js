@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -51,6 +52,16 @@ const config = {
   },
 
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: false,
+      comments: false
+    }),
+
     new HtmlWebpackPlugin({ template: 'index.html' }),
 
     new CleanWebpackPlugin(pathsToClean, { verbose: true })

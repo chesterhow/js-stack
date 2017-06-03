@@ -1,0 +1,210 @@
+[
+  {
+    "name": "Test",
+    "imgPath": "react.svg",
+    "summary": "A JS library for building user interfaces.",
+    "benefits": [
+      {
+        "id": 1,
+        "benefit": "Reusability. Component-based architecture",
+        "children": [
+          {
+            "id": 1.1,
+            "benefit": "Consistent UI throughout application"
+          }, {
+            "id": 1.2,
+            "benefit": "Easier to maintain"
+          }
+        ]
+      }, {
+        "id": 2,
+        "benefit": "Virtual DOM",
+        "children": [
+          {
+            "id": 2.1,
+            "benefit": "Diff algorithm compares the DOM states"
+          }, {
+            "id": 2.2,
+            "benefit": "Updates only the modified nodes"
+          }, {
+            "id": 2.3,
+            "benefit": "Faster rendering and DOM manipulation"
+          }
+        ]
+      }, {
+        "id": 3,
+        "benefit": "Non-opinionated"
+      }, {
+        "id": 4,
+        "benefit": "Easy debugging with React Devtools"
+      }, {
+        "id": 5,
+        "benefit": "Huge community, lots of help available"
+      }, {
+        "id": 6,
+        "benefit": "Maintained and used by Facebook"
+      }
+    ],
+    "github": "https://github.com/facebook/react",
+    "docs": "https://facebook.github.io/react/"
+  },
+  {
+    "name": "Redux",
+    "imgPath": "redux.svg",
+    "summary": "A predictable state container for JavaScript apps.",
+    "benefits": [
+      {
+        "id": 1,
+        "benefit": "Manages application state"
+      }, {
+        "id": 2,
+        "benefit": "Entire state is stored in an object tree inside a single store (single source of truth)"
+      }, {
+        "id": 3,
+        "benefit": "State is never directly mutated",
+        "children": [
+          {
+            "id": 3.1,
+            "benefit": "Dispatch actions describing what happened"
+          }, {
+            "id": 3.2,
+            "benefit": "Pure reducers decide how the action mutates state"
+          }
+        ]
+      }, {
+        "id": 4,
+        "benefit": "Easy debugging with Redux Devtools"
+      }, {
+        "id": 5,
+        "benefit": "No magic"
+      }
+    ],
+    "github": "https://github.com/reactjs/redux/",
+    "docs": "http://redux.js.org/"
+  },
+  {
+    "name": "webpack 2",
+    "imgPath": "webpack.svg",
+    "summary": "A module bundler for JavaScript.",
+    "benefits": [
+      {
+        "id": 1,
+        "benefit": "Great dependency management"
+      }, {
+        "id": 2,
+        "benefit": "Very configurable"
+      }, {
+        "id": 3,
+        "benefit": "Works on server side"
+      }, {
+        "id": 4,
+        "benefit": "Can do code splitting"
+      }, {
+        "id": 5,
+        "benefit": "Dev server and hot reloads makes development faster"
+      }, {
+        "id": 6,
+        "benefit": "Widely used in the React community (more support)"
+      }
+    ],
+    "github": "https://github.com/webpack/webpack",
+    "docs": "https://webpack.js.org/"
+  },
+  {
+    "name": "Babel",
+    "imgPath": "babel.svg",
+    "summary": "A JavaScript compiler for compiling ES6 to ES5.",
+    "benefits": [
+      {
+        "id": 1,
+        "benefit": "Allows us to write ES6"
+      }, {
+        "id": 2,
+        "benefit": "Transpiles to ES5 which works with every browser"
+      }, {
+        "id": 3,
+        "benefit": "Supports JSX (used by React)"
+      }, {
+        "id": 4,
+        "benefit": "Has the greatest level of compatibility with the ES6 spec"
+      }
+    ],
+    "github": "https://github.com/babel/babel",
+    "docs": "https://babeljs.io/"
+  },
+  {
+    "name": "React Router",
+    "imgPath": "react-router.svg",
+    "summary": "Declarative routing for React.",
+    "benefits": [
+      {
+        "id": 1,
+        "benefit": "Easy way to setup routes"
+      }, {
+        "id": 2,
+        "benefit": "Works on both client and server side"
+      }
+    ],
+    "github": "https://github.com/ReactTraining/react-router",
+    "docs": "https://reacttraining.com/react-router/web/guides/quick-start"
+  },
+  {
+    "name": "ESLint",
+    "imgPath": "eslint.svg",
+    "summary": "A ECMAScript / JavaScript linter.",
+    "benefits": [
+      {
+        "id": 1,
+        "benefit": "Code linting for JavaScript reduces errors"
+      }, {
+        "id": 2,
+        "benefit": "Comes with default rules"
+      }, {
+        "id": 3,
+        "benefit": "Pluggable & configurable rules"
+      }, {
+        "id": 4,
+        "benefit": "Good documentation"
+      }, {
+        "id": 5,
+        "benefit": "Integration with many Editors",
+        "children": [
+          {
+            "id": 5.1,
+            "benefit": "Sublime Text 3, VIM, Atom, VS Code, JetBrains IDEs"
+          }
+        ]
+      }, {
+        "id": 6,
+        "benefit": "React rules available"
+      }, {
+        "id": 7,
+        "benefit": "Style checking"
+      }
+    ],
+    "github": "https://github.com/eslint/eslint",
+    "docs": "http://eslint.org/"
+  },
+  {
+    "name": "Flow (?)",
+    "imgPath": "flow.svg",
+    "summary": "A static type checker for JavaScript.",
+    "benefits": [
+      {
+        "id": 1,
+        "benefit": "Enforces the type of a construct"
+      }, {
+        "id": 2,
+        "benefit": "Detect type errors before runtime"
+      }, {
+        "id": 3,
+        "benefit": "Also works as a form of documentation"
+      }, {
+        "id": 4,
+        "benefit": "Reduces the need to manually handle type errors"
+      }
+    ],
+    "github": "https://github.com/facebook/flow",
+    "docs": "https://flow.org/en/docs/"
+  }
+]

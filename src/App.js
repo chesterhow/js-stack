@@ -1,22 +1,17 @@
 import React from 'react';
-import Tool from './Tool';
-import data from './json/data.json';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Dev from './containers/Dev';
+import Test from './containers/Test';
 import './stylesheets/styles.scss';
 
-const App = () => {
-  const renderTools = () => (
-    data.map(tool => (
-      <Tool key={tool.name} tool={tool} />
-    ))
-  );
-
-  return (
-    <div className="app">
-      <h1 className="app--title">JS Stack</h1>
-      {renderTools()}
+const App = () => (
+  <Router>
+    <div>
+      <Route exact path="/" component={Dev} />
+      <Route path="/testing" component={Test} />
     </div>
-  );
-};
-
+  </Router>
+);
 
 export default App;
