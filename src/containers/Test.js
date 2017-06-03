@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Nav from '../components/Nav';
 import Tool from '../components/Tool';
+import Footer from '../components/Footer';
 import data from '../json/test.json';
 import '../stylesheets/test.scss';
 
@@ -16,6 +17,7 @@ const Test = ({ location }) => {
     <div className="test">
       <Nav pathname={location.pathname} />
       {renderTools()}
+      <Footer />
     </div>
   );
 };
