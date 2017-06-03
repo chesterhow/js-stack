@@ -12,7 +12,7 @@ const config = {
   ],
 
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[chunkhash:8].js',
 
     path: path.resolve(__dirname, 'dist'),
 
