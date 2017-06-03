@@ -1,5 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const pathsToClean = ['dist'];
 
 const config = {
   entry: [
@@ -23,7 +27,7 @@ const config = {
 
     path: path.resolve(__dirname, 'dist'),
 
-    publicPath: '/dist/'
+    publicPath: ''
     // necessary for HMR to know where to load the hot update chunks
   },
 
@@ -64,8 +68,12 @@ const config = {
     new webpack.HotModuleReplacementPlugin(),
     // enable HMR globally
 
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
     // prints more readable module names in the browser console on HMR updates
+
+    new HtmlWebpackPlugin({ template: 'index.html' }),
+
+    new CleanWebpackPlugin(pathsToClean, { verbose: true })
   ],
 
   devServer: {
