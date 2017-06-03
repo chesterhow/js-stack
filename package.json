@@ -4,8 +4,9 @@
   "description": "A site listing the tools which will be used for the new React stack",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack",
+    "start": "webpack-dev-server --env=dev",
+    "build:dev": "webpack --env=dev --progress --profile -- colors",
+    "build:prod": "webpack --env=prod --progress --profile --colors",
     "lint": "eslint src"
   },
   "repository": "git@github.com:chesterhow/js-stack.git",
@@ -15,7 +16,8 @@
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-hot-loader": "next"
+    "react-hot-loader": "next",
+    "webpack": "^2.6.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -35,7 +37,6 @@
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   }
 }
