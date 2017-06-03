@@ -33,7 +33,7 @@
         ]
       }, {
         "id": 3,
-        "benefit": "Non-opinionated"
+        "benefit": "Unopinionated"
       }, {
         "id": 4,
         "benefit": "Easy debugging with React Devtools"
