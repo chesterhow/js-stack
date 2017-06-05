@@ -6,24 +6,34 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const pathsToClean = ['dist'];
 
 const config = {
-  entry: [
-    'react-hot-loader/patch',
-    // activate HMR for react
+  entry: {
+    main: [
+      'react-hot-loader/patch',
+      // activate HMR for react
 
-    'webpack-dev-server/client?http://localhost:8080',
-    // bundle the client for webpack-dev-server
-    // and connect to the provided endpoint
+      'webpack-dev-server/client?http://localhost:8080',
+      // bundle the client for webpack-dev-server
+      // and connect to the provided endpoint
 
-    'webpack/hot/only-dev-server',
-    // bundle the client for hot reloading
-    // only- means to only hot reload for successful updates
+      'webpack/hot/only-dev-server',
+      // bundle the client for hot reloading
+      // only- means to only hot reload for successful updates
 
-    './src/index.js'
-    // entry point of the app
-  ],
+      './src/index.js'
+      // entry point of the app
+    ],
+
+    vendor: [
+      'react',
+      'react-dom',
+      'react-router-dom'
+    ]
+    // global dependencies
+  },
 
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
+    // Not using [chunkhash] in dev as it increases compilation time
 
     path: path.resolve(__dirname, 'dist'),
 
@@ -71,9 +81,16 @@ const config = {
     new webpack.NamedModulesPlugin(),
     // prints more readable module names in the browser console on HMR updates
 
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor']
+    }),
+    // split global dependencies into a separate 'vendor' file
+
     new HtmlWebpackPlugin({ template: 'index.html' }),
+    // generates 'index.html' and handles 'script' and 'link' tags
 
     new CleanWebpackPlugin(pathsToClean, { verbose: true })
+    // removes 'dist' folder before building
   ],
 
   devServer: {
