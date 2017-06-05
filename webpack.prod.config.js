@@ -14,7 +14,8 @@ const config = {
     vendor: [
       'react',
       'react-dom',
-      'react-router-dom'
+      'react-router-dom',
+      'prop-types'
     ]
     // global dependencies
   },
@@ -38,7 +39,7 @@ const config = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: ['css-loader', 'sass-loader', 'postcss-loader']
         })
       }, {
         test: /\.(jpg|png|svg)$/,

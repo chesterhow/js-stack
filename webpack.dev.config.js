@@ -60,6 +60,8 @@ const config = {
         }, {
           loader: 'sass-loader'
           // compiles Sass to CSS
+        }, {
+          loader: 'postcss-loader'
         }]
       }, {
         test: /\.(jpg|png|svg)$/,
