@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const pathsToClean = ['dist'];
 
@@ -35,16 +36,10 @@ const config = {
         exclude: /node_modules/
       }, {
         test: /\.scss$/,
-        use: [{
-          loader: 'style-loader'
-          // creates style nodes from JS strings
-        }, {
-          loader: 'css-loader'
-          // translates CSS into CommonJS
-        }, {
-          loader: 'sass-loader'
-          // compiles Sass to CSS
-        }]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       }, {
         test: /\.(jpg|png|svg)$/,
         use: {
@@ -65,6 +60,10 @@ const config = {
     // split global dependencies into a separate 'vendor' file
     // 'manifest' file ensures the 'vendor' file's hash remains the same
     // this allows us to leverage browser caching
+
+    new ExtractTextPlugin('styles.[contentHash:8].css'),
+    // split css into separate file
+    // note: do not use this for dev as it does not work with HMR
 
     new HtmlWebpackPlugin({ template: 'index.html' }),
     // generates 'index.html' and handles 'script' and 'link' tags
