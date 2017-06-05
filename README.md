@@ -37,17 +37,17 @@ This project uses ESLint and Airbnb's ESLint configurations. You may configure t
 ### Code splitting
 The production build has been configured to split the assets into separate files in the `dist` folder. The assets are named in the following convention: `[name].[chunkHash:8].[ext]`. E.g. `main.91b2f62c.js`.
 
-The purpose of this is so we can leverage browser caching for certain static assets which are not changed at each build. Read on for an explanation.
+The purpose of this is so we can leverage browser caching for certain assets which do not change on each build. Read on for an explanation.
 
 #### `vendor` and `manifest` files
-The `vendor` file should contains the "global" libraries used by the application. E.g. React, ReactDOM... The list is configurable in the `entry` block of `webpack.prod.config.js`.
+The `vendor` file should contain the "global" libraries used by the application. E.g. React, ReactDOM... The list can be configured in the `entry` block of `webpack.prod.config.js`.
 
-Typically, these libraries do not change often hence, we want to be able to cache these assets on the browser. On each build, assuming no changes were made to these libraries, the `chunkHash` in `vendor.[chunkHash:8].js` remains the same. Hence, the browser will use it's cached copy instead of requesting a new copy from the server.
+These libraries do not change often. Thus, we want to be able to cache these assets on the browser. On each build, assuming no changes were made to these libraries, the `chunkHash` in `vendor.[chunkHash:8].js` remains the same. Hence, the browser will use it's cached copy instead of requesting a new copy from the server.
 
 The `manifest` file is required to ensure the `chunkHash` for the `vendor` file remains the same each build. Full explanation [here](https://webpack.js.org/guides/code-splitting-libraries/#manifest-file).
 
 #### `styles` file
-Similarly, the hash in the `styles` file will remain the same on each build if no changes have been made to the CSS. Allowing us to leverage the browser's cache once more.
+Similarly, the hash in the `styles` file will remain the same on each build if no changes have been made to the CSS. Once more allowing us to leverage the browser's cache.
 
 One known issue is that even though the styles are separated from the code, changes in the style still causes the `main` file's chunkHash to change. See [issue](https://github.com/webpack/webpack/issues/672).
 
