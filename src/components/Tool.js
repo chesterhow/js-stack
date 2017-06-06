@@ -1,23 +1,47 @@
+// @flow
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import '../stylesheets/tool.scss';
 
-class Tool extends Component {
-  constructor(props) {
+type BenefitObj = {
+  id: number,
+  benefit: string,
+  children?: Array<BenefitObj>
+}
+
+type ToolObj = {
+  name: string,
+  summary: string,
+  imgPath: string,
+  github: string,
+  docs: string,
+  benefits: Array<BenefitObj>
+}
+
+type Props = {
+  tool: ToolObj
+}
+
+type State = {
+  expand: boolean
+}
+
+class Tool extends Component<void, Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = { expand: false };
 
-    this.toggleContent = this.toggleContent.bind(this);
-    this.renderBenefits = this.renderBenefits.bind(this);
-    this.renderContent = this.renderContent.bind(this);
+    (this: any).toggleContent = this.toggleContent.bind(this);
   }
+
+  state: State
 
   toggleContent() {
     this.setState({ expand: !this.state.expand });
   }
 
-  renderBenefits(benefits) {
+  renderBenefits(benefits: Array<BenefitObj>): Array<React.Element<*>> {
     return benefits.map((benefit) => {
       let childBenefits = null;
 
@@ -38,7 +62,7 @@ class Tool extends Component {
     });
   }
 
-  renderContent(benefits) {
+  renderContent(benefits: Array<BenefitObj>): (React.Element<*> | null) {
     if (this.state.expand) {
       return (
         <div className="tool--content">
@@ -56,8 +80,8 @@ class Tool extends Component {
     return null;
   }
 
-  render() {
-    const { tool } = this.props;
+  render(): React.Element<*> {
+    const { name, summary, imgPath, benefits, github, docs }: ToolObj = this.props.tool;
 
     return (
       <div className="tool">
@@ -69,23 +93,23 @@ class Tool extends Component {
         >
           <img
             className="tool--img"
-            src={require(`../images/${tool.imgPath}`) || ''}
-            alt={tool.name}
+            src={require(`../images/${imgPath}`) || ''}
+            alt={name}
           />
-          <h3 className="tool--name">{tool.name}</h3>
+          <h3 className="tool--name">{name}</h3>
         </div>
 
         <div className="tool--information">
-          <p className="tool--summary">{tool.summary}</p>
-          {this.renderContent(tool.benefits)}
+          <p className="tool--summary">{summary}</p>
+          {this.renderContent(benefits)}
           <a
-            href={tool.github}
+            href={github}
             className="tool--links"
             rel="noopener noreferrer"
             target="_blank"
           >GitHub</a>
           <a
-            href={tool.docs}
+            href={docs}
             className="tool--links"
             rel="noopener noreferrer"
             target="_blank"
@@ -95,9 +119,5 @@ class Tool extends Component {
     );
   }
 }
-
-Tool.propTypes = {
-  tool: PropTypes.object.isRequired
-};
 
 export default Tool;

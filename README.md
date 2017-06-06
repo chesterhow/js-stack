@@ -31,7 +31,7 @@ You may configure the production build via `webpack.prod.config.js`.
 ```sh
 $ yarn lint
 ```
-This project uses ESLint and Airbnb's ESLint configurations. You may configure the linter via `.eslintrc`.
+This project uses ESLint and Airbnb's ESLint configurations. You may configure the linter via `.eslintrc`. This command also calls `flow` which starts up the Flow background process, which will check all Flow files for errors. To stop this process, run `flow stop`.
 
 ## Notes
 ### Code splitting
@@ -71,4 +71,32 @@ server {
 
     expires $expires;
 . . .
+```
+
+### Flow
+Flow can be configured via the `.flowconfig` file. To enable Flow, you'll have to add the comment `// @flow` to each file. For consistency's sake, I've placed the comment at the start of each file.
+
+#### Comparison
+The containers `Dev.js` and `Test.js` (in `/src/containers/`), are basically identical. The difference being `Dev.js` uses Flow and `Test.js` doesn't. Take a look at these 2 files for a simple comparison of how the code will look with and without Flow.
+
+#### Dealing with non-JS imports
+While webpack allows us to require CSS / SCSS files, Flow doesn't recognise it and will throw the error `Required module not found`. The solution was adding the following line into the `.flowconfig` file.
+
+```
+module.name_mapper.extension='scss' -> 'empty/object'
+```
+
+This can also be used for images if the need arises. Source and explanation [here](https://gist.github.com/lambdahands/d19e0da96285b749f0ef).
+
+#### webpack & Hot Module Replacement
+These are 3rd-party code which Flow does not have information about. In order to handle this, we can create a "library definition" or "libdef". More on libdefs [here](https://flow.org/en/docs/libdefs/). In `index.js` (in `/src/`), we are accessing `module.hot.accept` which Flow does not know about and hence will throw some errors.
+
+The solution was to create our own libdef (see `/flow-typed/myLibDef.js`) and declare it there. Taken from [here](https://github.com/flowtype/flow-typed/issues/165).
+
+```js
+declare var module: {
+  hot: {
+    accept(path: string, callback: () => void): void;
+  };
+}
 ```
