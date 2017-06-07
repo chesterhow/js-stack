@@ -5,4 +5,5 @@
 [libs]
 
 [options]
+suppress_comment= \\(.\\|\n\\)*\\flow-disable-next-line]
 module.name_mapper.extension='scss' -> 'empty/object'

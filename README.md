@@ -100,3 +100,13 @@ declare var module: {
   };
 }
 ```
+
+### Server-side Rendering
+I've somehow managed to hack together something that worked!
+
+#### Usage
+1. Make sure you're on the `server-side` branch
+2. Run `yarn ssr:build`
+3. Then run `yarn ssr:start`
+
+This is the 'production' build. I'm still figuring out how to create a dev build, preferably with hot reloading. Goodluck me.
