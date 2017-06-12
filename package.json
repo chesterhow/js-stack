@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "ssr:start": "node dist/server",
-    "ssr:build": "webpack --config ./webpack.client.js && webpack --config ./webpack.server.js",
+    "ssr:build": "webpack -p --config ./webpack.client.js && webpack -p --config ./webpack.server.js",
     "lint": "eslint src && flow"
   },
   "repository": "git@github.com:chesterhow/js-stack.git",
