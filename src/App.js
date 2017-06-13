@@ -1,23 +1,19 @@
 // @flow
 
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Dev from './containers/Dev';
 import Test from './containers/Test';
 import './stylesheets/styles.scss';
 
-const history = createHistory();
-
 const App = () => (
-  <ConnectedRouter history={history}>
+  <Router>
     <div>
-      <Route exact path="/" component={Dev} />
-      <Route path="/testing" component={Test} />
+      <Route exact path="/" render={(props) => <Dev {...props} />} />
+      <Route path="/testing" render={(props) => <Test {...props} />} />
     </div>
-  </ConnectedRouter>
+  </Router>
 );
 
 export default App;
