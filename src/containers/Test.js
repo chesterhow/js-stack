@@ -1,31 +1,69 @@
-// @noflow
-
-import React from 'react';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import Nav from '../components/Nav';
 import Tool from '../components/Tool';
 import Footer from '../components/Footer';
-import data from '../json/test.json';
+
+import { fetchTestTools, upvoteTool, downvoteTool } from '../actions/actions';
+import { getTestTools } from '../reducers/reducer-tools';
+
 import '../stylesheets/test.scss';
 
-const Test = ({ location }) => {
-  const renderTools = () => (
-    data.map(tool => (
-      <Tool key={tool.name} tool={tool} />
-    ))
-  );
+class Test extends Component {
+  componentWillMount() {
+    if (this.props.tools.length === 0) {
+      this.props.fetchTestTools();
+    }
+  }
 
-  return (
-    <div className="test">
-      <Nav pathname={location.pathname} />
-      {renderTools()}
-      <Footer />
-    </div>
-  );
+  renderTools() {
+    return this.props.tools.map((tool) => (
+      <Tool
+        key={tool.name}
+        tool={tool}
+        category="test"
+        upvote={this.props.upvoteTool}
+        downvote={this.props.downvoteTool}
+      />
+    ));
+  }
+
+  render() {
+    return (
+      <div className="test">
+        <Nav pathname={this.props.location.pathname} />
+        {this.renderTools()}
+        <Footer />
+      </div>
+    );
+  }
+}
+
+Test.defaultProps = {
+  tools: []
 };
 
 Test.propTypes = {
-  location: PropTypes.object.isRequired
+  tools: PropTypes.array,
+  location: PropTypes.object.isRequired,
+  upvoteTool: PropTypes.func.isRequired,
+  downvoteTool: PropTypes.func.isRequired,
+  fetchTestTools: PropTypes.func.isRequired
 };
 
-export default Test;
+const mapStateToProps = (state) => ({
+  tools: getTestTools(state)
+});
+
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    fetchTestTools,
+    upvoteTool,
+    downvoteTool
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Test);

@@ -1,31 +1,69 @@
-// @flow
-
-import React from 'react';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import Nav from '../components/Nav';
 import Tool from '../components/Tool';
 import Footer from '../components/Footer';
-import data from '../json/dev.json';
+
+import { fetchDevTools, upvoteTool, downvoteTool } from '../actions/actions';
+import { getDevTools } from '../reducers/reducer-tools';
+
 import '../stylesheets/dev.scss';
 
-const Dev = ({ location }: { location: Object }): React.Element<*> => {
-  const renderTools = () => (
-    data.map(tool => (
-      <Tool key={tool.name} tool={tool} />
-    ))
-  );
+class Dev extends Component {
+  componentWillMount() {
+    if (this.props.tools.length === 0) {
+      this.props.fetchDevTools();
+    }
+  }
 
-  return (
-    <div className="dev">
-      <Nav pathname={location.pathname} />
-      {renderTools()}
-      <Footer />
-    </div>
-  );
+  renderTools() {
+    return this.props.tools.map((tool) => (
+      <Tool
+        key={tool.name}
+        tool={tool}
+        category="dev"
+        upvote={this.props.upvoteTool}
+        downvote={this.props.downvoteTool}
+      />
+    ));
+  }
+
+  render() {
+    return (
+      <div className="dev">
+        <Nav pathname={this.props.location.pathname} />
+        {this.renderTools()}
+        <Footer />
+      </div>
+    );
+  }
+}
+
+Dev.defaultProps = {
+  tools: []
 };
 
 Dev.propTypes = {
-  location: PropTypes.object.isRequired
+  tools: PropTypes.array,
+  location: PropTypes.object.isRequired,
+  upvoteTool: PropTypes.func.isRequired,
+  downvoteTool: PropTypes.func.isRequired,
+  fetchDevTools: PropTypes.func.isRequired
 };
 
-export default Dev;
+const mapStateToProps = (state) => ({
+  tools: getDevTools(state)
+});
+
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    fetchDevTools,
+    upvoteTool,
+    downvoteTool
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dev);

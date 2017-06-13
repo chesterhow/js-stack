@@ -31,6 +31,14 @@
     vertical-align: middle;
   }
 
+  &--votes {
+    color: $grey;
+    display: inline-block;
+    float: right;
+    font-size: 3rem;
+    margin: 0;
+  }
+
   &--information {
     color: $grey-dark;
     margin: .5rem 0 0 4rem;
@@ -41,8 +49,12 @@
   }
 
   &--links {
+    background: 0;
+    border: 0;
     color: $grey;
+    cursor: pointer;
     display: inline-block;
+    font-family: 'Lora', serif;
     font-size: 1rem;
     font-weight: 400;
     margin: 1.5rem 1rem 0 0;

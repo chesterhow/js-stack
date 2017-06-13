@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Enzyme",
     "imgPath": "enzyme.svg",
     "summary": "A JavaScript testing utility for React.",
@@ -28,9 +29,11 @@
       }
     ],
     "github": "https://github.com/airbnb/enzyme",
-    "docs": "http://airbnb.io/enzyme/"
+    "docs": "http://airbnb.io/enzyme/",
+    "votes": 0
   },
   {
+    "id": 2,
     "name": "Mocha (?)",
     "imgPath": "mocha.svg",
     "summary": "A JavaScript testing framework.",
@@ -53,9 +56,11 @@
       }
     ],
     "github": "https://github.com/mochajs/mocha",
-    "docs": "http://mochajs.org/"
+    "docs": "http://mochajs.org/",
+    "votes": 0
   },
   {
+    "id": 3,
     "name": "Jest (?)",
     "imgPath": "jest.svg",
     "summary": "A JavaScript testing framework.",
@@ -72,6 +77,7 @@
       }
     ],
     "github": "https://github.com/facebook/jest",
-    "docs": "https://facebook.github.io/jest/"
+    "docs": "https://facebook.github.io/jest/",
+    "votes": 0
   }
 ]

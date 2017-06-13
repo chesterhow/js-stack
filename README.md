@@ -76,9 +76,6 @@ server {
 ### Flow
 Flow can be configured via the `.flowconfig` file. To enable Flow, you'll have to add the comment `// @flow` to each file. For consistency's sake, I've placed the comment at the start of each file.
 
-#### Comparison
-The containers `Dev.js` and `Test.js` (in `/src/containers/`), are basically identical. The difference being `Dev.js` uses Flow and `Test.js` doesn't. Take a look at these 2 files for a simple comparison of how the code will look with and without Flow.
-
 #### Dealing with non-JS imports
 While webpack allows us to require CSS / SCSS files, Flow doesn't recognise it and will throw the error `Required module not found`. The solution was adding the following line into the `.flowconfig` file.
 

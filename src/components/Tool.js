@@ -10,16 +10,24 @@ type BenefitObj = {
 }
 
 type ToolObj = {
+  // This is a current bug with eslint-plugin-react and flow
+  // https://github.com/yannickcr/eslint-plugin-react/issues/816
+  // eslint-disable-next-line
+  id: number,
   name: string,
   summary: string,
   imgPath: string,
   github: string,
   docs: string,
-  benefits: Array<BenefitObj>
+  benefits: Array<BenefitObj>,
+  votes: number
 }
 
 type Props = {
-  tool: ToolObj
+  tool: ToolObj,
+  category: string,
+  upvote: (number, string) => void,
+  downvote: (number, string) => void
 }
 
 type State = {
@@ -39,6 +47,16 @@ class Tool extends Component<void, Props, State> {
 
   toggleContent() {
     this.setState({ expand: !this.state.expand });
+  }
+
+  vote(vote: boolean) {
+    const { tool: { id }, category, upvote, downvote } = this.props;
+
+    if (vote) {
+      upvote(id, category);
+    } else {
+      downvote(id, category);
+    }
   }
 
   renderBenefits(benefits: Array<BenefitObj>): Array<React.Element<*>> {
@@ -81,7 +99,7 @@ class Tool extends Component<void, Props, State> {
   }
 
   render(): React.Element<*> {
-    const { name, summary, imgPath, benefits, github, docs }: ToolObj = this.props.tool;
+    const { name, summary, imgPath, benefits, github, docs, votes }: ToolObj = this.props.tool;
 
     return (
       <div className="tool">
@@ -97,6 +115,7 @@ class Tool extends Component<void, Props, State> {
             alt={name}
           />
           <h3 className="tool--name">{name}</h3>
+          <h3 className="tool--votes">{votes}</h3>
         </div>
 
         <div className="tool--information">
@@ -114,6 +133,18 @@ class Tool extends Component<void, Props, State> {
             rel="noopener noreferrer"
             target="_blank"
           >Docs</a>
+          <input
+            type="button"
+            value="Upvote"
+            className="tool--links"
+            onClick={() => this.vote(true)}
+          />
+          <input
+            type="button"
+            value="Downvote"
+            className="tool--links"
+            onClick={() => this.vote(false)}
+          />
         </div>
       </div>
     );
