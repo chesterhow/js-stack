@@ -107,6 +107,11 @@ I've somehow managed to hack together something that worked!
 #### Usage
 1. Make sure you're on the `server-side` branch
 2. Run `yarn ssr:build`
-3. Then run `yarn ssr:start`
+3. Then run `yarn ssr:start`. The site is now live at http://localhost:8080.
 
-This is the 'production' build. I'm still figuring out how to create a dev build, preferably with hot reloading. Goodluck me.
+#### Next steps
+- Configure a development build, with webpack-dev-server and hot reloading
+- Code splitting. There are a few options for this. More research required. Some options are:
+  - Split by routes
+  - Split vendor packages
+  - Split CSS/SCSS (not required for CSSinJS)

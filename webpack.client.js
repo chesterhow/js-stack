@@ -39,10 +39,6 @@ const config = {
   },
 
   plugins: [
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   names: ['vendor']
-    // }),
-
     new ExtractTextPlugin('styles.css'),
 
     new CleanWebpackPlugin(pathsToClean, { verbose: true })
