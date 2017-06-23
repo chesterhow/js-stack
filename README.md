@@ -46,6 +46,18 @@ These libraries do not change often. Thus, we want to be able to cache these ass
 
 The `manifest` file is required to ensure the `chunkHash` for the `vendor` file remains the same each build. Full explanation [here](https://webpack.js.org/guides/code-splitting-libraries/#manifest-file).
 
+#### Problem
+If you modify the code and rebuild, you will notice the `vendor` file's `chunkhash` has changed again! This is a really large [issue](https://github.com/webpack/webpack/issues/1315) which remains open on the webpack repository. It has been open for 2 years now. However there are some solutions available. For this project, we are making use of the `HashedModuleIdsPlugin` plugin. Simply include this plugin in the webpack config like so
+
+```js
+plugins: [
+  new webpack.HashedModuleIdsPlugin(),
+  ...
+]
+```
+
+So far this solution has worked pretty well. However, it is still recommended to pay attention in future builds to the `chunkHash`. Just in case.
+
 #### `styles` file
 Similarly, the hash in the `styles` file will remain the same on each build if no changes have been made to the CSS. Once more allowing us to leverage the browser's cache.
 
