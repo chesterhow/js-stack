@@ -58,9 +58,14 @@ const config = {
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
     }),
-    // split global dependencies into a separate 'vendor' file
-    // 'manifest' file ensures the 'vendor' file's hash remains the same
-    // this allows us to leverage browser caching
+    // split global dependencies into a separate 'vendor' file.
+    // 'manifest' file extracts webpack's runtime code from the 'vendor'
+    // file. this prevents the 'vendor' file's chunkhash from changing
+    // every build.
+
+    new webpack.HashedModuleIdsPlugin(),
+    // ensures the 'vendor' file's chunkhash stays the same when code
+    // is modified
 
     new ExtractTextPlugin('styles.[contentHash:8].css'),
     // split css into separate file
