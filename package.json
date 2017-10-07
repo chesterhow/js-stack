@@ -12,7 +12,7 @@
   "repository": "git@github.com:chesterhow/js-stack.git",
   "author": "Chester How <chesterhow@gmail.com>",
   "license": "MIT",
-  "browserlist": [
+  "browserslist": [
     "> 1%"
   ],
   "dependencies": {
